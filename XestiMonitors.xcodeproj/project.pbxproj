@@ -149,6 +149,14 @@
 		F56FAB7220375097006FAB7B /* DocumentStateMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56FAB7120375097006FAB7B /* DocumentStateMonitorTests.swift */; };
 		F56FAB742037531C006FAB7B /* MockDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56FAB732037531C006FAB7B /* MockDocument.swift */; };
 		F594069A203B3F6400922B67 /* FileSystemObjectMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5940699203B3F6400922B67 /* FileSystemObjectMonitor.swift */; };
+		F5C7B6332057282A00799B14 /* CloudIdentityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B6312057282A00799B14 /* CloudIdentityMonitor.swift */; };
+		F5C7B6342057282A00799B14 /* CloudIdentityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B6312057282A00799B14 /* CloudIdentityMonitor.swift */; };
+		F5C7B6352057282A00799B14 /* CloudIdentityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B6312057282A00799B14 /* CloudIdentityMonitor.swift */; };
+		F5C7B6362057282A00799B14 /* CloudIdentityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B6312057282A00799B14 /* CloudIdentityMonitor.swift */; };
+		F5C7B6372057282A00799B14 /* CloudKeyValueStoreMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B6322057282A00799B14 /* CloudKeyValueStoreMonitor.swift */; };
+		F5C7B6382057282A00799B14 /* CloudKeyValueStoreMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B6322057282A00799B14 /* CloudKeyValueStoreMonitor.swift */; };
+		F5C7B6392057282A00799B14 /* CloudKeyValueStoreMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B6322057282A00799B14 /* CloudKeyValueStoreMonitor.swift */; };
+		F5C7B63A2057282A00799B14 /* CloudKeyValueStoreMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B6322057282A00799B14 /* CloudKeyValueStoreMonitor.swift */; };
 		F5E1DE372006A59600C43E8D /* ApplicationInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3029E20067A40005BC04A /* ApplicationInjection.swift */; };
 		F5E1DE382006A64000C43E8D /* ApplicationStateMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3029420067A40005BC04A /* ApplicationStateMonitor.swift */; };
 		F5E1DE3A2006A64800C43E8D /* MemoryMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3029620067A40005BC04A /* MemoryMonitor.swift */; };
@@ -382,6 +390,8 @@
 		F56FAB732037531C006FAB7B /* MockDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDocument.swift; sourceTree = "<group>"; };
 		F5940699203B3F6400922B67 /* FileSystemObjectMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemObjectMonitor.swift; sourceTree = "<group>"; };
 		F5EC1B112040AD4B0056CAD9 /* MetadataQueryMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetadataQueryMonitor.swift; sourceTree = "<group>"; };
+		F5C7B6312057282A00799B14 /* CloudIdentityMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudIdentityMonitor.swift; sourceTree = "<group>"; };
+		F5C7B6322057282A00799B14 /* CloudKeyValueStoreMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKeyValueStoreMonitor.swift; sourceTree = "<group>"; };
 		F5F3028A20067A40005BC04A /* KeyboardMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardMonitor.swift; sourceTree = "<group>"; };
 		F5F3028C20067A40005BC04A /* NetworkReachabilityMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityMonitor.swift; sourceTree = "<group>"; };
 		F5F3028E20067A40005BC04A /* CMAcceleration+DeviceOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CMAcceleration+DeviceOrientation.swift"; sourceTree = "<group>"; };
@@ -611,6 +621,8 @@
 		F5F3028920067A40005BC04A /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				F5C7B6312057282A00799B14 /* CloudIdentityMonitor.swift */,
+				F5C7B6322057282A00799B14 /* CloudKeyValueStoreMonitor.swift */,
 				F56FAB6520373C3B006FAB7B /* DocumentStateMonitor.swift */,
 				F5940699203B3F6400922B67 /* FileSystemObjectMonitor.swift */,
 				F5F3028A20067A40005BC04A /* KeyboardMonitor.swift */,
@@ -1143,6 +1155,7 @@
 				F5F302BE20067A40005BC04A /* NetworkReachabilityMonitor.swift in Sources */,
 				F5F302FE20067A40005BC04A /* MotionActivityManagerInjection.swift in Sources */,
 				F5F3033220067A40005BC04A /* MagnetometerMonitor.swift in Sources */,
+				F5C7B6332057282A00799B14 /* CloudIdentityMonitor.swift in Sources */,
 				F5F302DE20067A40005BC04A /* ProtectedDataMonitor.swift in Sources */,
 				F5F3030620067A40005BC04A /* NetworkReachabilityInjection.swift in Sources */,
 				F5F302F620067A40005BC04A /* ApplicationInjection.swift in Sources */,
@@ -1156,6 +1169,7 @@
 				F54498AE203E128200D91E3B /* FileSystem.swift in Sources */,
 				F5F302EE20067A40005BC04A /* AccessibilityStatusInjection.swift in Sources */,
 				F5F302E620067A40005BC04A /* StatusBarMonitor.swift in Sources */,
+				F5C7B6372057282A00799B14 /* CloudKeyValueStoreMonitor.swift in Sources */,
 				F56FAB6620373C3B006FAB7B /* DocumentStateMonitor.swift in Sources */,
 				F5F3032220067A40005BC04A /* AccelerometerMonitor.swift in Sources */,
 				F54498A9203E11CE00D91E3B /* NetworkReachability.swift in Sources */,
@@ -1193,6 +1207,7 @@
 				F50693AD2007BFCA0031754B /* TimeMonitor.swift in Sources */,
 				F5F3033520067A40005BC04A /* MagnetometerMonitor.swift in Sources */,
 				F50693BD2007BFDB0031754B /* NetworkReachabilityInjection.swift in Sources */,
+				F5C7B6362057282A00799B14 /* CloudIdentityMonitor.swift in Sources */,
 				F5F3030520067A40005BC04A /* MotionManagerInjection.swift in Sources */,
 				F54498AC203E11CE00D91E3B /* NetworkReachability.swift in Sources */,
 				F50693C52007BFE10031754B /* OrientationMonitor.swift in Sources */,
@@ -1206,6 +1221,7 @@
 				F50693AA2007BFCA0031754B /* ProtectedDataMonitor.swift in Sources */,
 				F50693BB2007BFDB0031754B /* ApplicationInjection.swift in Sources */,
 				F50693C92007BFE70031754B /* CMAcceleration+DeviceOrientation.swift in Sources */,
+				F5C7B63A2057282A00799B14 /* CloudKeyValueStoreMonitor.swift in Sources */,
 				F5F3033120067A40005BC04A /* GyroscopeMonitor.swift in Sources */,
 				F54498B6203E152E00D91E3B /* FileSystemInjection.swift in Sources */,
 				F56FAB6920373C41006FAB7B /* DocumentStateMonitor.swift in Sources */,
@@ -1243,6 +1259,7 @@
 				F50693CC2007BFF00031754B /* DeviceMotionMonitor.swift in Sources */,
 				F50693972007BFBE0031754B /* AccessibilityElementMonitor.swift in Sources */,
 				F5F3030720067A40005BC04A /* NetworkReachabilityInjection.swift in Sources */,
+				F5C7B6342057282A00799B14 /* CloudIdentityMonitor.swift in Sources */,
 				F50693A32007BFC80031754B /* ProtectedDataMonitor.swift in Sources */,
 				F54498AA203E11CE00D91E3B /* NetworkReachability.swift in Sources */,
 				F50693A52007BFC80031754B /* StatusBarMonitor.swift in Sources */,
@@ -1256,6 +1273,7 @@
 				F50693BF2007BFDF0031754B /* OrientationMonitor.swift in Sources */,
 				F50693CD2007BFF00031754B /* GyroscopeMonitor.swift in Sources */,
 				F50693C72007BFE50031754B /* CMAcceleration+DeviceOrientation.swift in Sources */,
+				F5C7B6382057282A00799B14 /* CloudKeyValueStoreMonitor.swift in Sources */,
 				F50693BE2007BFDF0031754B /* BatteryMonitor.swift in Sources */,
 				F54498B4203E152E00D91E3B /* FileSystemInjection.swift in Sources */,
 				F56FAB6720373C3F006FAB7B /* DocumentStateMonitor.swift in Sources */,
@@ -1293,6 +1311,7 @@
 				F5F302C020067A40005BC04A /* NetworkReachabilityMonitor.swift in Sources */,
 				F5F3030820067A40005BC04A /* NetworkReachabilityInjection.swift in Sources */,
 				F5F302D020067A40005BC04A /* Monitor.swift in Sources */,
+				F5C7B6352057282A00799B14 /* CloudIdentityMonitor.swift in Sources */,
 				F5E1DE3D2006A65300C43E8D /* TimeMonitor.swift in Sources */,
 				F54498AB203E11CE00D91E3B /* NetworkReachability.swift in Sources */,
 				F55F4F092006B35400CCDDA0 /* AccessibilityStatusMonitor.swift in Sources */,
@@ -1306,6 +1325,7 @@
 				F50693D42007BFF20031754B /* GyroscopeMonitor.swift in Sources */,
 				F50693C82007BFE60031754B /* CMAcceleration+DeviceOrientation.swift in Sources */,
 				F50693C12007BFE00031754B /* BatteryMonitor.swift in Sources */,
+				F5C7B6392057282A00799B14 /* CloudKeyValueStoreMonitor.swift in Sources */,
 				F56FAB6820373C40006FAB7B /* DocumentStateMonitor.swift in Sources */,
 				F54498B5203E152E00D91E3B /* FileSystemInjection.swift in Sources */,
 				F50693B52007BFDA0031754B /* AltimeterInjection.swift in Sources */,
