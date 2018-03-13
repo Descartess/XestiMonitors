@@ -7,134 +7,141 @@
 //  © 2018 J. G. Pusey (see LICENSE.md)
 //
 
-import Foundation
+#if os(iOS) || os(macOS) || os(tvOS)
 
-///
-/// A `CloudKeyValueStoreMonitor` instance monitors ...
-///
-public class CloudKeyValueStoreMonitor: BaseNotificationMonitor {
-    ///
-    /// Encapsulates changes to ...
-    ///
-    public enum Event {
-        ///
-        ///
-        ///
-        case accountChange([String])
-
-        ///
-        ///
-        ///
-        case initialSyncChange([String])
-
-        ///
-        ///
-        ///
-        case quotaViolationChange([String])
-
-        ///
-        ///
-        ///
-        case serverChange([String])
-    }
+    import Foundation
 
     ///
-    /// Specifies which events to monitor.
+    /// A `CloudKeyValueStoreMonitor` instance monitors ...
     ///
-    public struct Options: OptionSet {
+    public class CloudKeyValueStoreMonitor: BaseNotificationMonitor {
         ///
-        /// Monitor `accountChange` events.
+        /// Encapsulates changes to ...
         ///
-        public static let accountChange = Options(rawValue: 1 << 0)
+        public enum Event {
+            ///
+            ///
+            ///
+            case accountChange([String])
 
-        ///
-        /// Monitor `initialSyncChange` events.
-        ///
-        public static let initialSyncChange = Options(rawValue: 1 << 1)
+            ///
+            ///
+            ///
+            case initialSyncChange([String])
 
-        ///
-        /// Monitor `quotaViolationChange` events.
-        ///
-        public static let quotaViolationChange = Options(rawValue: 1 << 2)
+            ///
+            ///
+            ///
+            case quotaViolationChange([String])
 
-        ///
-        /// Monitor `serverChange` events.
-        ///
-        public static let serverChange = Options(rawValue: 1 << 3)
-
-        ///
-        /// Monitor all events.
-        ///
-        public static let all: Options = [.accountChange,
-                                          .initialSyncChange,
-                                          .quotaViolationChange,
-                                          .serverChange]
-
-        /// :nodoc:
-        public init(rawValue: UInt) {
-            self.rawValue = rawValue
+            ///
+            ///
+            ///
+            case serverChange([String])
         }
 
-        /// :nodoc:
-        public let rawValue: UInt
-    }
+        ///
+        /// Specifies which events to monitor.
+        ///
+        public struct Options: OptionSet {
+            ///
+            /// Monitor `accountChange` events.
+            ///
+            public static let accountChange = Options(rawValue: 1 << 0)
 
-    ///
-    /// Initializes a new `MetadataQueryMonitor`.
-    ///
-    /// - Parameters:
-    ///   - options:    The options that specify which events to monitor. By
-    ///                 default, all events are monitored.
-    ///   - queue:      The operation queue on which the handler executes. By
-    ///                 default, the main operation queue is used.
-    ///   - handler:    The handler to call when the results of the metadata
-    ///                 query change.
-    ///
-    public init(options: Options = .all,
-                queue: OperationQueue = .main,
-                handler: @escaping (Event) -> Void) {
-        self.handler = handler
-        self.options = options
+            ///
+            /// Monitor `initialSyncChange` events.
+            ///
+            public static let initialSyncChange = Options(rawValue: 1 << 1)
 
-        super.init(queue: queue)
-    }
+            ///
+            /// Monitor `quotaViolationChange` events.
+            ///
+            public static let quotaViolationChange = Options(rawValue: 1 << 2)
 
-    private let handler: (Event) -> Void
-    private let options: Options
+            ///
+            /// Monitor `serverChange` events.
+            ///
+            public static let serverChange = Options(rawValue: 1 << 3)
 
-    private func invokeHandler(_ notification: Notification) {
+            ///
+            /// Monitor all events.
+            ///
+            public static let all: Options = [.accountChange,
+                                              .initialSyncChange,
+                                              .quotaViolationChange,
+                                              .serverChange]
 
-        let userInfo = notification.userInfo
+            /// :nodoc:
+            public init(rawValue: UInt) {
+                self.rawValue = rawValue
+            }
 
-        guard
-            let changeReason = userInfo?[NSUbiquitousKeyValueStoreChangeReasonKey] as? Int
-            else { return }
+            /// :nodoc:
+            public let rawValue: UInt
+        }
 
-        let changedKeys = userInfo?[NSUbiquitousKeyValueStoreChangedKeysKey] as? [String] ?? []
+        ///
+        /// Initializes a new `MetadataQueryMonitor`.
+        ///
+        /// - Parameters:
+        ///   - options:    The options that specify which events to monitor. By
+        ///                 default, all events are monitored.
+        ///   - queue:      The operation queue on which the handler executes. By
+        ///                 default, the main operation queue is used.
+        ///   - handler:    The handler to call when the results of the metadata
+        ///                 query change.
+        ///
+        public init(options: Options = .all,
+                    queue: OperationQueue = .main,
+                    handler: @escaping (Event) -> Void) {
+            self.handler = handler
+            self.options = options
 
-        switch changeReason {
-        case NSUbiquitousKeyValueStoreAccountChange where options.contains(.accountChange):
-            handler(.accountChange(changedKeys))
+            super.init(queue: queue)
+        }
 
-        case NSUbiquitousKeyValueStoreInitialSyncChange where options.contains(.initialSyncChange):
-            handler(.initialSyncChange(changedKeys))
+        private let handler: (Event) -> Void
+        private let options: Options
 
-        case NSUbiquitousKeyValueStoreQuotaViolationChange where options.contains(.quotaViolationChange):
-            handler(.quotaViolationChange(changedKeys))
+        private func invokeHandler(_ notification: Notification) {
+            let userInfo = notification.userInfo
 
-        case NSUbiquitousKeyValueStoreServerChange where options.contains(.serverChange):
-            handler(.serverChange(changedKeys))
+            guard
+                let changeReason = userInfo?[NSUbiquitousKeyValueStoreChangeReasonKey] as? Int
+                else { return }
 
-        default:
-            break
+            let changedKeys = userInfo?[NSUbiquitousKeyValueStoreChangedKeysKey] as? [String] ?? []
+
+            switch changeReason {
+            case NSUbiquitousKeyValueStoreAccountChange
+                where options.contains(.accountChange):
+                handler(.accountChange(changedKeys))
+
+            case NSUbiquitousKeyValueStoreInitialSyncChange
+                where options.contains(.initialSyncChange):
+                handler(.initialSyncChange(changedKeys))
+
+            case NSUbiquitousKeyValueStoreQuotaViolationChange
+                where options.contains(.quotaViolationChange):
+                handler(.quotaViolationChange(changedKeys))
+
+            case NSUbiquitousKeyValueStoreServerChange
+                where options.contains(.serverChange):
+                handler(.serverChange(changedKeys))
+
+            default:
+                break
+            }
+        }
+
+        override public func addNotificationObservers() {
+            super.addNotificationObservers()
+
+            observe(NSUbiquitousKeyValueStore.didChangeExternallyNotification) { [unowned self] in
+                self.invokeHandler($0)
+            }
         }
     }
 
-    override public func addNotificationObservers() {
-        super.addNotificationObservers()
-
-        observe(NSUbiquitousKeyValueStore.didChangeExternallyNotification) { [unowned self] in
-            self.invokeHandler($0)
-        }
-    }
-}
+#endif
