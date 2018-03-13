@@ -626,8 +626,8 @@
 				F5F3028A20067A40005BC04A /* KeyboardMonitor.swift */,
 				F5EC1B112040AD4B0056CAD9 /* MetadataQueryMonitor.swift */,
 				F5F3028C20067A40005BC04A /* NetworkReachabilityMonitor.swift */,
-				F5C7B6312057282A00799B14 /* UbiquityIdentityMonitor.swift */,
 				F5C7B6322057282A00799B14 /* UbiquitousKeyValueStoreMonitor.swift */,
+				F5C7B6312057282A00799B14 /* UbiquityIdentityMonitor.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
