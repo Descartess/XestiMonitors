@@ -1,5 +1,5 @@
 //
-//  CloudKeyValueStoreMonitor.swift
+//  UbiquitousKeyValueStoreMonitor.swift
 //  XestiMonitors
 //
 //  Created by J. G. Pusey on 2018-03-12.
@@ -12,9 +12,9 @@
     import Foundation
 
     ///
-    /// A `CloudKeyValueStoreMonitor` instance monitors ...
+    /// A `UbiquitousKeyValueStoreMonitor` instance monitors ...
     ///
-    public class CloudKeyValueStoreMonitor: BaseNotificationMonitor {
+    public class UbiquitousKeyValueStoreMonitor: BaseNotificationMonitor {
         ///
         /// Encapsulates changes to ...
         ///
@@ -82,28 +82,27 @@
         }
 
         ///
-        /// Initializes a new `MetadataQueryMonitor`.
+        /// Initializes a new `UbiquitousKeyValueStoreMonitor`.
         ///
         /// - Parameters:
         ///   - options:    The options that specify which events to monitor. By
         ///                 default, all events are monitored.
         ///   - queue:      The operation queue on which the handler executes. By
         ///                 default, the main operation queue is used.
-        ///   - handler:    The handler to call when the results of the metadata
-        ///                 query change.
+        ///   - handler:    The handler to call when ...
         ///
         public init(options: Options = .all,
                     queue: OperationQueue = .main,
                     handler: @escaping (Event) -> Void) {
-            self.cloudKeyValueStore = .`default`
             self.handler = handler
+            self.keyValueStore = .`default`
             self.options = options
 
             super.init(queue: queue)
         }
 
-        private let cloudKeyValueStore: NSUbiquitousKeyValueStore
         private let handler: (Event) -> Void
+        private let keyValueStore: NSUbiquitousKeyValueStore
         private let options: Options
 
         private func invokeHandler(_ notification: Notification) {
@@ -141,7 +140,7 @@
             super.addNotificationObservers()
 
             observe(NSUbiquitousKeyValueStore.didChangeExternallyNotification,
-                    object: cloudKeyValueStore) { [unowned self] in
+                    object: keyValueStore) { [unowned self] in
                 self.invokeHandler($0)
             }
         }

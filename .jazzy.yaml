@@ -44,6 +44,8 @@ custom_categories:
       - KeyboardMonitor
       - MetadataQueryMonitor
       - NetworkReachabilityMonitor
+      - UbiquityIdentityMonitor
+      - UbiquitousKeyValueStoreMonitor
   - name: Extensions
     children:
       - CMAcceleration
