@@ -95,12 +95,14 @@
         public init(options: Options = .all,
                     queue: OperationQueue = .main,
                     handler: @escaping (Event) -> Void) {
+            self.cloudKeyValueStore = .`default`
             self.handler = handler
             self.options = options
 
             super.init(queue: queue)
         }
 
+        private let cloudKeyValueStore: NSUbiquitousKeyValueStore
         private let handler: (Event) -> Void
         private let options: Options
 
@@ -138,7 +140,8 @@
         override public func addNotificationObservers() {
             super.addNotificationObservers()
 
-            observe(NSUbiquitousKeyValueStore.didChangeExternallyNotification) { [unowned self] in
+            observe(NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+                    object: cloudKeyValueStore) { [unowned self] in
                 self.invokeHandler($0)
             }
         }
