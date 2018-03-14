@@ -12,202 +12,65 @@ import XCTest
 @testable import XestiMonitors
 
 internal class UbiquityIdentityMonitorTests: XCTestCase {
-    let query = NSMetadataQuery()   // MockMetadataQuery()
+    let fileManager = MockFileManager()
     let notificationCenter = MockNotificationCenter()
 
     override func setUp() {
         super.setUp()
 
+        FileManagerInjector.inject = { return self.fileManager }
+
         NotificationCenterInjector.inject = { return self.notificationCenter }
     }
 
-    func testMonitor_didFinishGathering() {
+    func testMonitor_didChange_nil() {
         let expectation = self.expectation(description: "Handler called")
-        let expectedAddedItems: [Any] = []
-        let expectedChangedItems: [Any] = []
-        let expectedRemovedItems: [Any] = []
-        var expectedEvent: MetadataQueryMonitor.Event?
-        let monitor = MetadataQueryMonitor(query: query,
-                                           options: .didFinishGathering,
-                                           queue: .main) { event in
-                                            expectedEvent = event
-                                            expectation.fulfill()
+        var expectedEvent: UbiquityIdentityMonitor.Event?
+        let monitor = UbiquityIdentityMonitor(queue: .main) { event in
+            expectedEvent = event
+            expectation.fulfill()
         }
 
         monitor.startMonitoring()
-        simulateDidFinishGathering(addedItems: expectedAddedItems,
-                                   changedItems: expectedChangedItems,
-                                   removedItems: expectedRemovedItems)
+        simulateDidChange(to: nil)
         waitForExpectations(timeout: 1)
         monitor.stopMonitoring()
 
         if let event = expectedEvent,
-            case let .didFinishGathering(info) = event {
-            XCTAssertTrue(compare(info.addedItems, expectedAddedItems))
-            XCTAssertTrue(compare(info.changedItems, expectedChangedItems))
-            XCTAssertEqual(info.query, query)
-            XCTAssertTrue(compare(info.removedItems, expectedRemovedItems))
+            case let .didChange(token) = event {
+            XCTAssertNil(token)
         } else {
             XCTFail("Unexpected event")
         }
     }
 
-    func testMonitor_didStartGathering() {
+    func testMonitor_didChange_nonNil() {
         let expectation = self.expectation(description: "Handler called")
-        let expectedAddedItems: [Any] = []
-        let expectedChangedItems: [Any] = []
-        let expectedRemovedItems: [Any] = []
-        var expectedEvent: MetadataQueryMonitor.Event?
-        let monitor = MetadataQueryMonitor(query: query,
-                                           options: .didStartGathering,
-                                           queue: .main) { event in
-                                            expectedEvent = event
-                                            expectation.fulfill()
+        let expectedToken = "bogus"
+        var expectedEvent: UbiquityIdentityMonitor.Event?
+        let monitor = UbiquityIdentityMonitor(queue: .main) { event in
+            expectedEvent = event
+            expectation.fulfill()
         }
 
         monitor.startMonitoring()
-        simulateDidStartGathering(addedItems: expectedAddedItems,
-                                  changedItems: expectedChangedItems,
-                                  removedItems: expectedRemovedItems)
+        simulateDidChange(to: expectedToken as AnyObject)
         waitForExpectations(timeout: 1)
         monitor.stopMonitoring()
 
         if let event = expectedEvent,
-            case let .didStartGathering(info) = event {
-            XCTAssertTrue(compare(info.addedItems, expectedAddedItems))
-            XCTAssertTrue(compare(info.changedItems, expectedChangedItems))
-            XCTAssertEqual(info.query, query)
-            XCTAssertTrue(compare(info.removedItems, expectedRemovedItems))
+            case let .didChange(token) = event,
+            let actualToken = token as? String {
+            XCTAssertEqual(actualToken, expectedToken)
         } else {
             XCTFail("Unexpected event")
         }
     }
 
-    func testMonitor_didUpdate() {
-        let expectation = self.expectation(description: "Handler called")
-        let expectedAddedItems: [Any] = []
-        let expectedChangedItems: [Any] = []
-        let expectedRemovedItems: [Any] = []
-        var expectedEvent: MetadataQueryMonitor.Event?
-        let monitor = MetadataQueryMonitor(query: query,
-                                           options: .didUpdate,
-                                           queue: .main) { event in
-                                            expectedEvent = event
-                                            expectation.fulfill()
-        }
+    private func simulateDidChange(to token: AnyObject?) {
+        fileManager.ubiquityIdentityToken = token as? (NSCoding & NSCopying & NSObjectProtocol)
 
-        monitor.startMonitoring()
-        simulateDidUpdate(addedItems: expectedAddedItems,
-                          changedItems: expectedChangedItems,
-                          removedItems: expectedRemovedItems)
-        waitForExpectations(timeout: 1)
-        monitor.stopMonitoring()
-
-        if let event = expectedEvent,
-            case let .didUpdate(info) = event {
-            XCTAssertTrue(compare(info.addedItems, expectedAddedItems))
-            XCTAssertTrue(compare(info.changedItems, expectedChangedItems))
-            XCTAssertEqual(info.query, query)
-            XCTAssertTrue(compare(info.removedItems, expectedRemovedItems))
-        } else {
-            XCTFail("Unexpected event")
-        }
-    }
-
-    func testMonitor_gatheringProgress() {
-        let expectation = self.expectation(description: "Handler called")
-        let expectedAddedItems: [Any] = []
-        let expectedChangedItems: [Any] = []
-        let expectedRemovedItems: [Any] = []
-        var expectedEvent: MetadataQueryMonitor.Event?
-        let monitor = MetadataQueryMonitor(query: query,
-                                           options: .gatheringProgress,
-                                           queue: .main) { event in
-                                            expectedEvent = event
-                                            expectation.fulfill()
-        }
-
-        monitor.startMonitoring()
-        simulateGatheringProgress(addedItems: expectedAddedItems,
-                                  changedItems: expectedChangedItems,
-                                  removedItems: expectedRemovedItems)
-        waitForExpectations(timeout: 1)
-        monitor.stopMonitoring()
-
-        if let event = expectedEvent,
-            case let .gatheringProgress(info) = event {
-            XCTAssertTrue(compare(info.addedItems, expectedAddedItems))
-            XCTAssertTrue(compare(info.changedItems, expectedChangedItems))
-            XCTAssertEqual(info.query, query)
-            XCTAssertTrue(compare(info.removedItems, expectedRemovedItems))
-        } else {
-            XCTFail("Unexpected event")
-        }
-    }
-
-    private func compare(_ items1: [Any],
-                         _ items2: [Any]) -> Bool {
-        guard
-            let items1 = items1 as? [UInt],
-            let items2 = items2 as? [UInt]
-            else { return false }
-
-        return items1 == items2
-    }
-
-    private func makeUserInfo(addedItems: [Any],
-                              changedItems: [Any],
-                              removedItems: [Any]) -> [AnyHashable: Any] {
-        return [NSMetadataQueryUpdateAddedItemsKey: addedItems,
-                NSMetadataQueryUpdateChangedItemsKey: changedItems,
-                NSMetadataQueryUpdateRemovedItemsKey: removedItems]
-    }
-
-    private func simulateDidFinishGathering(addedItems: [Any],
-                                            changedItems: [Any],
-                                            removedItems: [Any]) {
-        let userInfo = makeUserInfo(addedItems: addedItems,
-                                    changedItems: changedItems,
-                                    removedItems: removedItems)
-
-        notificationCenter.post(name: .NSMetadataQueryDidFinishGathering,
-                                object: query,
-                                userInfo: userInfo)
-    }
-
-    private func simulateDidStartGathering(addedItems: [Any],
-                                           changedItems: [Any],
-                                           removedItems: [Any]) {
-        let userInfo = makeUserInfo(addedItems: addedItems,
-                                    changedItems: changedItems,
-                                    removedItems: removedItems)
-
-        notificationCenter.post(name: .NSMetadataQueryDidStartGathering,
-                                object: query,
-                                userInfo: userInfo)
-    }
-
-    private func simulateDidUpdate(addedItems: [Any],
-                                   changedItems: [Any],
-                                   removedItems: [Any]) {
-        let userInfo = makeUserInfo(addedItems: addedItems,
-                                    changedItems: changedItems,
-                                    removedItems: removedItems)
-
-        notificationCenter.post(name: .NSMetadataQueryDidUpdate,
-                                object: query,
-                                userInfo: userInfo)
-    }
-
-    private func simulateGatheringProgress(addedItems: [Any],
-                                           changedItems: [Any],
-                                           removedItems: [Any]) {
-        let userInfo = makeUserInfo(addedItems: addedItems,
-                                    changedItems: changedItems,
-                                    removedItems: removedItems)
-
-        notificationCenter.post(name: .NSMetadataQueryGatheringProgress,
-                                object: query,
-                                userInfo: userInfo)
+        notificationCenter.post(name: .NSUbiquityIdentityDidChange,
+                                object: nil)
     }
 }

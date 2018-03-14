@@ -131,6 +131,9 @@
 		F54498CB203E2A7D00D91E3B /* MockFileSystemObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54498C5203E2A7D00D91E3B /* MockFileSystemObject.swift */; };
 		F54553492006AAFA00D63955 /* ApplicationStateMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3034F20067AA3005BC04A /* ApplicationStateMonitorTests.swift */; };
 		F54553502006AB3100D63955 /* MockApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3036720067AA3005BC04A /* MockApplication.swift */; };
+		F55AE5552059D43300B81D31 /* MockFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55AE5542059D43300B81D31 /* MockFileManager.swift */; };
+		F55AE5562059D43300B81D31 /* MockFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55AE5542059D43300B81D31 /* MockFileManager.swift */; };
+		F55AE5572059D43300B81D31 /* MockFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55AE5542059D43300B81D31 /* MockFileManager.swift */; };
 		F55D72622040C818009CD29C /* MetadataQueryMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55D72612040C818009CD29C /* MetadataQueryMonitorTests.swift */; };
 		F55D72632040C818009CD29C /* MetadataQueryMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55D72612040C818009CD29C /* MetadataQueryMonitorTests.swift */; };
 		F55D72642040C818009CD29C /* MetadataQueryMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55D72612040C818009CD29C /* MetadataQueryMonitorTests.swift */; };
@@ -394,6 +397,7 @@
 		F54498BC203E29D900D91E3B /* FileSystemObjectMonitorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemObjectMonitorTests.swift; sourceTree = "<group>"; };
 		F54498C4203E2A7D00D91E3B /* MockFileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockFileSystem.swift; sourceTree = "<group>"; };
 		F54498C5203E2A7D00D91E3B /* MockFileSystemObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockFileSystemObject.swift; sourceTree = "<group>"; };
+		F55AE5542059D43300B81D31 /* MockFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockFileManager.swift; sourceTree = "<group>"; };
 		F55D72612040C818009CD29C /* MetadataQueryMonitorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetadataQueryMonitorTests.swift; sourceTree = "<group>"; };
 		F56FAB6520373C3B006FAB7B /* DocumentStateMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentStateMonitor.swift; sourceTree = "<group>"; };
 		F56FAB7120375097006FAB7B /* DocumentStateMonitorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentStateMonitorTests.swift; sourceTree = "<group>"; };
@@ -797,6 +801,7 @@
 				F5F3036720067AA3005BC04A /* MockApplication.swift */,
 				F5F3036820067AA3005BC04A /* MockDevice.swift */,
 				F56FAB732037531C006FAB7B /* MockDocument.swift */,
+				F55AE5542059D43300B81D31 /* MockFileManager.swift */,
 				F54498C4203E2A7D00D91E3B /* MockFileSystem.swift */,
 				F54498C5203E2A7D00D91E3B /* MockFileSystemObject.swift */,
 				F5F3036920067AA3005BC04A /* MockMotionActivityManager.swift */,
@@ -1378,6 +1383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F55D72622040C818009CD29C /* MetadataQueryMonitorTests.swift in Sources */,
+				F55AE5552059D43300B81D31 /* MockFileManager.swift in Sources */,
 				F5F3038620067AA3005BC04A /* ScreenshotMonitorTests.swift in Sources */,
 				F5F3038320067AA3005BC04A /* ProtectedDataMonitorTests.swift in Sources */,
 				F5F303A120067AA3005BC04A /* PedometerMonitorTests.swift in Sources */,
@@ -1433,6 +1439,7 @@
 				F55F4F062006ABA700CCDDA0 /* TimeMonitorTests.swift in Sources */,
 				F55F4F042006ABA700CCDDA0 /* ProtectedDataMonitorTests.swift in Sources */,
 				F5F303C720067AA3005BC04A /* MockNotificationCenter.swift in Sources */,
+				F55AE5572059D43300B81D31 /* MockFileManager.swift in Sources */,
 				F54498C8203E2A7D00D91E3B /* MockFileSystem.swift in Sources */,
 				F5F3037620067AA3005BC04A /* AccessibilityElementMonitorTests.swift in Sources */,
 				F5F303C420067AA3005BC04A /* MockNetworkReachability.swift in Sources */,
@@ -1459,6 +1466,7 @@
 				F5913FD22059C1BA00335200 /* UbiquitousKeyValueStoreMonitorTests.swift in Sources */,
 				F5913FCF2059C1BA00335200 /* UbiquityIdentityMonitorTests.swift in Sources */,
 				F5F303CF20067AA3005BC04A /* NetworkReachabilityMonitorTests.swift in Sources */,
+				F55AE5562059D43300B81D31 /* MockFileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
