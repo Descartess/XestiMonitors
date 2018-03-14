@@ -324,9 +324,9 @@ In addition, XestiMonitors provides seven other monitors:
   *(iOS, macOS, tvOS)*
 * [UbiquitousKeyValueStoreMonitor][ubiquitous_key_value_store_monitor] to
   monitor the iCloud (“ubiquitous”) key-value store for changes due to incoming
-  data pushed from iCloud.
+  data pushed from iCloud. *(iOS, macOS, tvOS)*
 * [UbiquityIdentityMonitor][ubiquity_identity_monitor] to monitor the system
-  for changes to the iCloud (”ubiquity”) identity.
+  for changes to the iCloud (”ubiquity”) identity. *(iOS, macOS, tvOS, watchOS)*
 
 [KeyboardMonitor][keyboard_monitor] is especially handy in removing lots of
 boilerplate code from your app. This is how keyboard monitoring is typically
