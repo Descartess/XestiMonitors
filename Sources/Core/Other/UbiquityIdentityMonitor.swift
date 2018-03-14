@@ -23,7 +23,7 @@ public class UbiquityIdentityMonitor: BaseNotificationMonitor {
         ///
         /// The iCloud identity has changed. The associated value is `nil` if
         /// this change is due to the current user disabling or logging out of
-        /// iCloud. Otherwise, it is a non-`nil`, opaque value.
+        /// iCloud.
         ///
         case didChange(AnyObject?)
     }

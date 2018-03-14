@@ -12,30 +12,38 @@
     import Foundation
 
     ///
-    /// A `UbiquitousKeyValueStoreMonitor` instance monitors ...
+    /// A `UbiquitousKeyValueStoreMonitor` instance monitors the iCloud
+    /// (“ubiquitous”) key-value store for changes due to incoming data pushed
+    /// from iCloud.
     ///
     public class UbiquitousKeyValueStoreMonitor: BaseNotificationMonitor {
         ///
-        /// Encapsulates changes to ...
+        /// Encapsulates changes to the iCloud key-value store.
         ///
         public enum Event {
             ///
-            ///
+            /// The user has changed the primary iCloud account. The keys and
+            /// values in the local key-value store have been replaced with
+            /// those from the new account, regardless of the relative
+            /// timestamps.
             ///
             case accountChange([String])
 
             ///
-            ///
+            /// Your attempt to write to key-value storage was discarded
+            /// because an initial download from iCloud has not yet happened.
             ///
             case initialSyncChange([String])
 
             ///
-            ///
+            /// Your app’s key-value store has exceeded its space quota on the
+            /// iCloud server.
             ///
             case quotaViolationChange([String])
 
             ///
-            ///
+            /// One or more values changed in iCloud. The associated value is
+            /// an array of key names that changed in the key-value store.
             ///
             case serverChange([String])
         }
@@ -85,11 +93,12 @@
         /// Initializes a new `UbiquitousKeyValueStoreMonitor`.
         ///
         /// - Parameters:
-        ///   - options:    The options that specify which events to monitor. By
-        ///                 default, all events are monitored.
-        ///   - queue:      The operation queue on which the handler executes. By
-        ///                 default, the main operation queue is used.
-        ///   - handler:    The handler to call when ...
+        ///   - options:    The options that specify which events to monitor.
+        ///                 By default, all events are monitored.
+        ///   - queue:      The operation queue on which the handler executes.
+        ///                 By default, the main operation queue is used.
+        ///   - handler:    The handler to call when the iCloud key-value store
+        ///                 changes.
         ///
         public init(options: Options = .all,
                     queue: OperationQueue = .main,
