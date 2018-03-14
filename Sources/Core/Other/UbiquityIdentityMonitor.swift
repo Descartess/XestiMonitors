@@ -38,7 +38,7 @@ public class UbiquityIdentityMonitor: BaseNotificationMonitor {
     ///
     public init(queue: OperationQueue = .main,
                 handler: @escaping (Event) -> Void) {
-        self.fileManager = .init()
+        self.fileManager = FileManagerInjector.inject()
         self.handler = handler
 
         super.init(queue: queue)
@@ -53,7 +53,7 @@ public class UbiquityIdentityMonitor: BaseNotificationMonitor {
         return fileManager.ubiquityIdentityToken as AnyObject?
     }
 
-    private let fileManager: FileManager
+    private let fileManager: FileManagerProtocol
     private let handler: (Event) -> Void
 
     override public func addNotificationObservers() {

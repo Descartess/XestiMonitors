@@ -148,6 +148,10 @@
 		F56FAB6920373C41006FAB7B /* DocumentStateMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56FAB6520373C3B006FAB7B /* DocumentStateMonitor.swift */; };
 		F56FAB7220375097006FAB7B /* DocumentStateMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56FAB7120375097006FAB7B /* DocumentStateMonitorTests.swift */; };
 		F56FAB742037531C006FAB7B /* MockDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56FAB732037531C006FAB7B /* MockDocument.swift */; };
+		F5913FC32059BA7700335200 /* FileManagerInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5913FC22059BA7700335200 /* FileManagerInjection.swift */; };
+		F5913FC42059BA7700335200 /* FileManagerInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5913FC22059BA7700335200 /* FileManagerInjection.swift */; };
+		F5913FC52059BA7700335200 /* FileManagerInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5913FC22059BA7700335200 /* FileManagerInjection.swift */; };
+		F5913FC62059BA7700335200 /* FileManagerInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5913FC22059BA7700335200 /* FileManagerInjection.swift */; };
 		F594069A203B3F6400922B67 /* FileSystemObjectMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5940699203B3F6400922B67 /* FileSystemObjectMonitor.swift */; };
 		F5C7B6332057282A00799B14 /* UbiquityIdentityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B6312057282A00799B14 /* UbiquityIdentityMonitor.swift */; };
 		F5C7B6342057282A00799B14 /* UbiquityIdentityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7B6312057282A00799B14 /* UbiquityIdentityMonitor.swift */; };
@@ -388,6 +392,7 @@
 		F56FAB6520373C3B006FAB7B /* DocumentStateMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentStateMonitor.swift; sourceTree = "<group>"; };
 		F56FAB7120375097006FAB7B /* DocumentStateMonitorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentStateMonitorTests.swift; sourceTree = "<group>"; };
 		F56FAB732037531C006FAB7B /* MockDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDocument.swift; sourceTree = "<group>"; };
+		F5913FC22059BA7700335200 /* FileManagerInjection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerInjection.swift; sourceTree = "<group>"; };
 		F5940699203B3F6400922B67 /* FileSystemObjectMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemObjectMonitor.swift; sourceTree = "<group>"; };
 		F5C7B6312057282A00799B14 /* UbiquityIdentityMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UbiquityIdentityMonitor.swift; sourceTree = "<group>"; };
 		F5C7B6322057282A00799B14 /* UbiquitousKeyValueStoreMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UbiquitousKeyValueStoreMonitor.swift; sourceTree = "<group>"; };
@@ -672,6 +677,7 @@
 				F5F3029D20067A40005BC04A /* AltimeterInjection.swift */,
 				F5F3029E20067A40005BC04A /* ApplicationInjection.swift */,
 				F5F3029F20067A40005BC04A /* DeviceInjection.swift */,
+				F5913FC22059BA7700335200 /* FileManagerInjection.swift */,
 				F54498AD203E128200D91E3B /* FileSystem.swift */,
 				F54498B2203E152E00D91E3B /* FileSystemInjection.swift */,
 				F54498B7203E193C00D91E3B /* FileSystemObjectInjection.swift */,
@@ -1190,6 +1196,7 @@
 				F54498B3203E152E00D91E3B /* FileSystemInjection.swift in Sources */,
 				F5F3031220067A40005BC04A /* AccessibilityAnnouncementMonitor.swift in Sources */,
 				F5F3032620067A40005BC04A /* AltimeterMonitor.swift in Sources */,
+				F5913FC32059BA7700335200 /* FileManagerInjection.swift in Sources */,
 				F5F302D620067A40005BC04A /* BackgroundRefreshMonitor.swift in Sources */,
 				F5F3033E20067A40005BC04A /* BatteryMonitor.swift in Sources */,
 				F5F3030E20067A40005BC04A /* PedometerInjection.swift in Sources */,
@@ -1242,6 +1249,7 @@
 				F5F3032920067A40005BC04A /* AltimeterMonitor.swift in Sources */,
 				F5EC1B1020408A630056CAD9 /* FileSystemObjectMonitor.swift in Sources */,
 				F50693A82007BFCA0031754B /* BackgroundRefreshMonitor.swift in Sources */,
+				F5913FC62059BA7700335200 /* FileManagerInjection.swift in Sources */,
 				F50693A72007BFCA0031754B /* ApplicationStateMonitor.swift in Sources */,
 				F5F3031120067A40005BC04A /* PedometerInjection.swift in Sources */,
 				F54498A8203E11CE00D91E3B /* AccessibilityStatus.swift in Sources */,
@@ -1294,6 +1302,7 @@
 				F50693962007BFBE0031754B /* AccessibilityAnnouncementMonitor.swift in Sources */,
 				F5EC1B0E20408A610056CAD9 /* FileSystemObjectMonitor.swift in Sources */,
 				F5F302C720067A40005BC04A /* BaseMonitor.swift in Sources */,
+				F5913FC42059BA7700335200 /* FileManagerInjection.swift in Sources */,
 				F50693AF2007BFD90031754B /* AltimeterInjection.swift in Sources */,
 				F50693CB2007BFF00031754B /* AltimeterMonitor.swift in Sources */,
 				F54498A6203E11CE00D91E3B /* AccessibilityStatus.swift in Sources */,
@@ -1346,6 +1355,7 @@
 				F5F3030C20067A40005BC04A /* NotificationCenterInjection.swift in Sources */,
 				F5EC1B0F20408A620056CAD9 /* FileSystemObjectMonitor.swift in Sources */,
 				F5F3031420067A40005BC04A /* AccessibilityAnnouncementMonitor.swift in Sources */,
+				F5913FC52059BA7700335200 /* FileManagerInjection.swift in Sources */,
 				F55F4F0A2006B3BC00CCDDA0 /* AccessibilityStatusInjection.swift in Sources */,
 				F50693D22007BFF20031754B /* AltimeterMonitor.swift in Sources */,
 				F54498A7203E11CE00D91E3B /* AccessibilityStatus.swift in Sources */,
